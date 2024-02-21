@@ -26,12 +26,18 @@ public class Helpers {
     */
    public Lista stringSplit(String string){
         String[] partes = string.split(", ");
+        //System.out.println(partes);
         String parte1 = partes[0]; // parte del string anterior a ", "
+        System.out.println(parte1);
         String parte2 = partes[1]; // parte del string posterior a ", "
-       
+        System.out.println(parte2);
+        String parte3 = partes[2];
+        //System.out.println(parte3);
         Lista lista = new Lista();
         lista.insertFinal(parte1);
         lista.insertFinal(parte2);
+        lista.insertFinal(parte3);
+        //lista.print();
         return lista;
    }
    

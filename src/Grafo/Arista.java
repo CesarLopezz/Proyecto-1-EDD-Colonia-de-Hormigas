@@ -13,12 +13,22 @@ import EDD.NodoG;
 public class Arista {
     private NodoG inicio;
     private NodoG objetivo;
+    private NodoG longitud;
     private Arista next;
 
-    public Arista(NodoG inicio, NodoG objetivo){
+    public Arista(NodoG inicio, NodoG objetivo, NodoG longitud){
         this.inicio=inicio;
         this.objetivo=objetivo;
+        this.longitud=longitud;
         this.next=null;
+    }
+
+    public NodoG getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(NodoG longitud) {
+        this.longitud = longitud;
     }
 
     public NodoG getInicio() {

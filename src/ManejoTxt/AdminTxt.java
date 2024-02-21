@@ -44,36 +44,29 @@ public class AdminTxt {
 
                 // Creamos un flujo de entrada para leer el archivo
                 FileReader fr = new FileReader(archivo);
-                
+               
                 JOptionPane.showMessageDialog(null, "Este programa necesita guardar en el archivo los datos cargados en memoria");
-                
+               
                 // Leemos los datos del archivo
                 BufferedReader br = new BufferedReader(fr);
                 String linea;
-                int contador =0;
+                //int contador =0;
                 while ((linea = br.readLine()) != null) {
 
                     // Si la línea es un usuario
                     if (linea.startsWith("ciudad")) {
-                        contador=1;
-                        ciudades.insertFinal(linea); 
-                        
+                        //contador=1;
+                        while(!(linea=br.readLine()).equals("aristas")){
+                            ciudades.insertFinal(linea);
+                        }
                     }
                     if (linea.startsWith("aristas")) {
-                        contador=2;
-                        comidas.insertFinal(linea);
+                        //contador=2;
+                        while((linea=br.readLine())!=null){
+                            //System.out.println(linea);
+                            comidas.insertFinal(linea);
+                        }
                     }
-                    ///if (linea.startsWith("@")) {
-                        ///if (contador==1){
-                            // Agregamos la línea a la lista de usuarios
-                           // ciudades.insertFinal(linea); 
-                            
-                           // }
-                        //if (contador ==2){
-                            // Agregamos la línea a la lista de relaciones
-                           // comidas.insertFinal(linea);
-                        //} 
-                        //}
                 }
 
                 // Cerramos el flujo de entrada

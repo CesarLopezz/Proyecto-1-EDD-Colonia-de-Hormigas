@@ -4,17 +4,64 @@
  */
 package Interfaces;
 
+import EDD.Lista;
+import EDD.NodoG;
+import Grafo.Arista;
+import Grafo.Grafo;
+import Helpers.Helpers;
+import ManejoTxt.AdminTxt;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author cesar
  */
 public class Menu extends javax.swing.JFrame {
+    static private Grafo grafo;
+    public static ModificarGrafo v0;
+    static private File archivo;
 
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu(Grafo grafo, File archivo) {
+        this.setVisible(true);
         initComponents();
+        this.setLocationRelativeTo(null);
+        if (grafo==null){
+        this.grafo=null;
+        }else{
+            this.grafo=grafo;
+        }
+        if (archivo==null){
+        this.archivo=null;
+        }else{
+            this.archivo=archivo;
+        }
+    }
+    
+    public Grafo getGrafo() {
+        return grafo;
+    }
+
+    public void setGrafo(Grafo grafo) {
+        this.grafo = grafo;
+    }
+
+    public File getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(File archivo) {
+        this.archivo = archivo;
     }
 
     /**
@@ -26,22 +73,163 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        CargaArchivo = new javax.swing.JButton();
+        ModificarGrafo = new javax.swing.JButton();
+        ActualizarRepo = new javax.swing.JButton();
+        MostrarGrafo = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CargaArchivo.setText("CargarArchivo");
+        CargaArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargaArchivoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CargaArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 220, -1));
+
+        ModificarGrafo.setText("Modificar Grafo");
+        ModificarGrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarGrafoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ModificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 220, -1));
+
+        ActualizarRepo.setText("Actualizar Repositorio");
+        ActualizarRepo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarRepoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ActualizarRepo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 220, -1));
+
+        MostrarGrafo.setText("MostrarGrafo");
+        MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarGrafoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 220, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CargaArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargaArchivoActionPerformed
+        AdminTxt admintxt=new AdminTxt();
+        Helpers helper=new Helpers();
+        Grafo grafo=new Grafo();
+        Lista ciudades =new Lista();
+        Lista comidas=new Lista();
+        try {
+            File archivo=admintxt.lecturaTxt(ciudades, comidas);
+            setArchivo(archivo);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        grafo.crearCiudades(ciudades);
+        ciudades.print();
+        grafo.crearComidas(comidas);
+        
+        System.out.println(comidas);
+        setGrafo(grafo);
+    }//GEN-LAST:event_CargaArchivoActionPerformed
+
+    private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
+        if (getGrafo().getNodos().getLength()!=0){
+        ModificarGrafo v3 = new ModificarGrafo(this,getGrafo(),archivo);
+        }else{
+            JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
+        }
+    }//GEN-LAST:event_ModificarGrafoActionPerformed
+
+    private void ActualizarRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarRepoActionPerformed
+        AdminTxt admintxt=new AdminTxt();
+        admintxt.escrituraTxt(getGrafo(), getArchivo());
+    }//GEN-LAST:event_ActualizarRepoActionPerformed
+
+    private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
+        //if (grafo.getNodos().getLength()==0){
+            //JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
+        //}
+        //el//se{
+        
+            //try{
+
+            //Graph graphLibrary = new MultiGraph("LGC Social");
+            //System.setProperty("org.graphstream.ui", "swing");
+            //NodoG auxNodo =getGrafo().getNodos().getHead();      
+
+            //graphLibrary.setAttribute("ui.stylesheet", "node{\n" +
+            //        "    size: 30px, 30px;\n" +
+            //        "    fill-color: orange;\n" +
+            //        "    text-mode: normal; \n" +
+            //        "}");
+            //Recorre los nodos y los agrega al grafo
+           // while(auxNodo!=null){
+            //    String numero=Integer.toString(auxNodo.getCiudad().getNumero());
+            //    String id=auxNodo.getCiudad().getId();
+//
+            //    graphLibrary.addNode(numero);
+            //    graphLibrary.getNode(numero).setAttribute("ui.label", id);
+            //    graphLibrary.getNode(numero).setAttribute("ui.frozen");
+            //    auxNodo=auxNodo.getNext();
+            //}                
+
+            //Recorre las aristas y las agrega al grafo
+            //Arista arista=getGrafo().getAristas().getHead();
+            //while(arista!=null){
+            //    String n1=Integer.toString(arista.getInicio().getCiudad().getNumero());
+            //    String n2=Integer.toString(arista.getObjetivo().getCiudad().getNumero());
+            //    String id=n1+n2;
+            //    graphLibrary.addEdge(id,n1,n2, true);
+            //    arista=arista.getNext();
+            //}
+            //this.displayGraph(graphLibrary);
+            //}
+            //catch(Exception err){
+            //        JOptionPane.showMessageDialog(null, err);
+            //}
+    //}
+    }//GEN-LAST:event_MostrarGrafoActionPerformed
+
+    //private void displayGraph(Graph graph2) {
+        //JFrame frame = new JFrame();
+        //frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        //JPanel panel = new JPanel(new GridLayout()){
+        //@Override
+        //public Dimension getPreferredSize() {
+        //    return new Dimension(800, 480);
+        //    }
+        //};
+        //frame.setSize(panel.getWidth(), panel.getHeight());
+     
+        //Viewer viewer = new SwingViewer(graph2, Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
+        //viewer.enableAutoLayout();
+        //ViewPanel viewPanel = (ViewPanel) viewer.addDefaultView(false);
+        //panel.add(viewPanel);
+        //frame.add(panel);
+        //frame.pack();
+        //frame.setLocationRelativeTo(null);
+        //frame.setVisible(true);      
+    //}
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -72,11 +260,16 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new Menu(grafo,archivo).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ActualizarRepo;
+    private javax.swing.JButton CargaArchivo;
+    private javax.swing.JButton ModificarGrafo;
+    private javax.swing.JButton MostrarGrafo;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

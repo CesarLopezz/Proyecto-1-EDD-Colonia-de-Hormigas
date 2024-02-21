@@ -85,13 +85,15 @@ public class Grafo {
         Nodo pointer = comidas.getHead();
         Helpers helpers = new Helpers();
         while (pointer!=null){
-            Lista lista =helpers.stringSplit(pointer.getElement().toString()); //separacion del string 
+            Lista lista = helpers.stringSplit(pointer.getElement().toString()); //separacion del string 
             Object id1=lista.getHead().getElement(); // se almacena id1 (id del usuario)
             Object id2=lista.getHead().getNext().getElement(); // se almacena id2 (id del usuario)
+            Object id3=lista.getHead().getNext().getElement();
             NodoG nodo1=searchById(id1.toString()); // se busca el nodoG cuyo nombre de usuario sea correspondiente al id1 y se almacena en una variable
             NodoG nodo2=searchById(id2.toString()); // se busca el nodoG cuyo nombre de usuario sea correspondiente al id2 y se almacena en una variable
+            NodoG nodo3=searchById(id3.toString());
             nodo1.getAdyacentes().insertFinal(nodo2.getCiudad()); // se inserta el nodo 2 en la lista de relaciones del nodo 1
-            Arista arista=new Arista(nodo1,nodo2);
+            Arista arista=new Arista(nodo1,nodo2,nodo3);
             getAristas().insertFinal(arista);
             pointer=pointer.getNext();
         }
@@ -208,7 +210,8 @@ public class Grafo {
                 Nodo pointer1=adyacentes.getHead();
                 while (pointer1!=null){
                     NodoG nodo2 =searchById(pointer1.getElement().toString());
-                    Arista arista=new Arista(nodo, nodo2);
+                    NodoG nodo3 =searchById(pointer1.getElement().toString());
+                    Arista arista=new Arista(nodo, nodo2,nodo3);
                     getAristas().insertFinal(arista);
                     nodo.getAdyacentes().insertFinal(nodo2.getCiudad());
                     pointer1=pointer1.getNext();
@@ -229,10 +232,12 @@ public class Grafo {
         while (pointer!=null){
             String id1=pointer.getInicio().getCiudad().getId();
             String id2=pointer.getObjetivo().getCiudad().getId();
+            String id3=pointer.getLongitud().getCiudad().getId();
             NodoG nodo1=searchById(id1); // se busca el nodoG cuyo nombre de usuario sea correspondiente al id1 y se almacena en una variable
-            NodoG nodo2=searchById(id2); // se busca el nodoG cuyo nombre de usuario sea correspondiente al id2 y se almacena en una variable
+            NodoG nodo2=searchById(id2);
+            NodoG nodo3=searchById(id3);// se busca el nodoG cuyo nombre de usuario sea correspondiente al id2 y se almacena en una variable
             nodo2.getAdyacentes().insertFinal(nodo1.getCiudad()); //inserta el nodo 1 en los adyacentes del 2 (se hace al reves porque es la transpuesta)
-            Arista arista=new Arista(nodo2,nodo1); //Se crea la nueva arista al reves (se hace al reves porque es la transpuesta)
+            Arista arista=new Arista(nodo2,nodo1,nodo3); //Se crea la nueva arista al reves (se hace al reves porque es la transpuesta)
             lista2.insertFinal(arista); //se insertan las aristas transpuestas en una lista
             pointer=pointer.getNext();
         }
