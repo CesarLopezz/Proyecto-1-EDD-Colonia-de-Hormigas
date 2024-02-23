@@ -25,7 +25,7 @@ public class Helpers {
     @return lista
     */
    public Lista stringSplit(String string){
-        String[] partes = string.split(", ");
+        String[] partes = string.split(",");
         //System.out.println(partes);
         String parte1 = partes[0]; // parte del string anterior a ", "
         System.out.println(parte1);
