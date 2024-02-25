@@ -19,6 +19,11 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.swing_viewer.SwingViewer;
+import org.graphstream.ui.swing_viewer.ViewPanel;
+import org.graphstream.ui.view.Viewer;
 
 /**
  *
@@ -163,71 +168,71 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_ActualizarRepoActionPerformed
 
     private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
-        //if (grafo.getNodos().getLength()==0){
-            //JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
-        //}
-        //el//se{
+        if (grafo.getNodos().getLength()==0){
+            JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
+        }
+        else{
         
-            //try{
+            try{
 
-            //Graph graphLibrary = new MultiGraph("LGC Social");
-            //System.setProperty("org.graphstream.ui", "swing");
-            //NodoG auxNodo =getGrafo().getNodos().getHead();      
+            Graph graphLibrary = new MultiGraph("LGC Social");
+            System.setProperty("org.graphstream.ui", "swing");
+            NodoG auxNodo =getGrafo().getNodos().getHead();      
 
-            //graphLibrary.setAttribute("ui.stylesheet", "node{\n" +
-            //        "    size: 30px, 30px;\n" +
-            //        "    fill-color: orange;\n" +
-            //        "    text-mode: normal; \n" +
-            //        "}");
+            graphLibrary.setAttribute("ui.stylesheet", "node{\n" +
+                    "    size: 30px, 30px;\n" +
+                    "    fill-color: orange;\n" +
+                    "    text-mode: normal; \n" +
+                    "}");
             //Recorre los nodos y los agrega al grafo
-           // while(auxNodo!=null){
-            //    String numero=Integer.toString(auxNodo.getCiudad().getNumero());
-            //    String id=auxNodo.getCiudad().getId();
-//
-            //    graphLibrary.addNode(numero);
-            //    graphLibrary.getNode(numero).setAttribute("ui.label", id);
-            //    graphLibrary.getNode(numero).setAttribute("ui.frozen");
-            //    auxNodo=auxNodo.getNext();
-            //}                
+            while(auxNodo!=null){
+                String numero=Integer.toString(auxNodo.getCiudad().getNumero());
+                String id=auxNodo.getCiudad().getId();
+
+                graphLibrary.addNode(numero);
+                graphLibrary.getNode(numero).setAttribute("ui.label", id);
+                graphLibrary.getNode(numero).setAttribute("ui.frozen");
+                auxNodo=auxNodo.getNext();
+            }                
 
             //Recorre las aristas y las agrega al grafo
-            //Arista arista=getGrafo().getAristas().getHead();
-            //while(arista!=null){
-            //    String n1=Integer.toString(arista.getInicio().getCiudad().getNumero());
-            //    String n2=Integer.toString(arista.getObjetivo().getCiudad().getNumero());
-            //    String id=n1+n2;
-            //    graphLibrary.addEdge(id,n1,n2, true);
-            //    arista=arista.getNext();
-            //}
-            //this.displayGraph(graphLibrary);
-            //}
-            //catch(Exception err){
-            //        JOptionPane.showMessageDialog(null, err);
-            //}
-    //}
+            Arista arista=getGrafo().getAristas().getHead();
+            while(arista!=null){
+                String n1=Integer.toString(arista.getInicio().getCiudad().getNumero());
+                String n2=Integer.toString(arista.getObjetivo().getCiudad().getNumero());
+                String id=n1+n2;
+                graphLibrary.addEdge(id,n1,n2, true);
+                arista=arista.getNext();
+            }
+            this.displayGraph(graphLibrary);
+            }
+            catch(Exception err){
+                    JOptionPane.showMessageDialog(null, err);
+            }
+        }
     }//GEN-LAST:event_MostrarGrafoActionPerformed
 
-    //private void displayGraph(Graph graph2) {
-        //JFrame frame = new JFrame();
-        //frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    private void displayGraph(Graph graph2) {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        //JPanel panel = new JPanel(new GridLayout()){
-        //@Override
-        //public Dimension getPreferredSize() {
-        //    return new Dimension(800, 480);
-        //    }
-        //};
-        //frame.setSize(panel.getWidth(), panel.getHeight());
+        JPanel panel = new JPanel(new GridLayout()){
+        @Override
+        public Dimension getPreferredSize() {
+            return new Dimension(800, 480);
+            }
+        };
+        frame.setSize(panel.getWidth(), panel.getHeight());
      
-        //Viewer viewer = new SwingViewer(graph2, Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
-        //viewer.enableAutoLayout();
-        //ViewPanel viewPanel = (ViewPanel) viewer.addDefaultView(false);
-        //panel.add(viewPanel);
-        //frame.add(panel);
-        //frame.pack();
-        //frame.setLocationRelativeTo(null);
-        //frame.setVisible(true);      
-    //}
+        Viewer viewer = new SwingViewer(graph2, Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
+        viewer.enableAutoLayout();
+        ViewPanel viewPanel = (ViewPanel) viewer.addDefaultView(false);
+        panel.add(viewPanel);
+        frame.add(panel);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);      
+    }
     
     
     /**
