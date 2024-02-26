@@ -25,7 +25,7 @@ public class Agregar extends javax.swing.JFrame {
     public Agregar(ModificarGrafo v3, Grafo grafo, File archivo) {
         initComponents();
         this.v3=v3;
-        //v3.setVisible(false);
+        v3.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.grafo=grafo;
