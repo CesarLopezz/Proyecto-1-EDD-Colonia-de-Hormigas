@@ -150,7 +150,7 @@ public class Menu extends javax.swing.JFrame {
         ciudades.print();
         grafo.crearComidas(comidas);
         
-        System.out.println(comidas);
+        //System.out.println(comidas);
         setGrafo(grafo);
     }//GEN-LAST:event_CargaArchivoActionPerformed
 

@@ -124,7 +124,7 @@ public class Agregar extends javax.swing.JFrame {
     private void AgregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCiudadActionPerformed
         String numero_ciudad = NumeroCiudad.getText();
         String relaciones = RelacionesCiudad.getText();
-        String[]relaciones2=relaciones.split(", ");
+        String[]relaciones2=relaciones.split(",");
         Lista lista=new Lista();
         if (relaciones.equalsIgnoreCase("")){
             

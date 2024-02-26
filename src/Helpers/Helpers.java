@@ -74,19 +74,9 @@ public class Helpers {
      */
     public String arroba(String id) {
 
-        String b = "@";
 
-        char primero = id.charAt(0);
-        String chart = Character.toString(primero);
-
-        if (chart.equalsIgnoreCase(b)) {
-            if (id.length() == 1) {
-                JOptionPane.showMessageDialog(null, "Nombre de usuario invalido. ");
-                return "no";
-
-            } else {
+        if (id.matches("\\d+")) {
                 return id;
-            }
         } else {
             JOptionPane.showMessageDialog(null, "Nombre de usuario invalido. ");
             return "no";
