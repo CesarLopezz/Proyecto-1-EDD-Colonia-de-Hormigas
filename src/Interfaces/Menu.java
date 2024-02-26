@@ -83,18 +83,21 @@ public class Menu extends javax.swing.JFrame {
         ModificarGrafo = new javax.swing.JButton();
         ActualizarRepo = new javax.swing.JButton();
         MostrarGrafo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        CargaArchivo.setForeground(new java.awt.Color(0, 0, 0));
         CargaArchivo.setText("CargarArchivo");
         CargaArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CargaArchivoActionPerformed(evt);
             }
         });
-        jPanel1.add(CargaArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 220, -1));
+        jPanel1.add(CargaArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 220, -1));
 
         ModificarGrafo.setText("Modificar Grafo");
         ModificarGrafo.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +105,7 @@ public class Menu extends javax.swing.JFrame {
                 ModificarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(ModificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 220, -1));
+        jPanel1.add(ModificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 220, -1));
 
         ActualizarRepo.setText("Actualizar Repositorio");
         ActualizarRepo.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +113,7 @@ public class Menu extends javax.swing.JFrame {
                 ActualizarRepoActionPerformed(evt);
             }
         });
-        jPanel1.add(ActualizarRepo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 220, -1));
+        jPanel1.add(ActualizarRepo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 220, -1));
 
         MostrarGrafo.setText("MostrarGrafo");
         MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +121,12 @@ public class Menu extends javax.swing.JFrame {
                 MostrarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 220, -1));
+        jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 220, -1));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("COLONIA DE HORMIGAS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 480, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -275,6 +283,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton CargaArchivo;
     private javax.swing.JButton ModificarGrafo;
     private javax.swing.JButton MostrarGrafo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

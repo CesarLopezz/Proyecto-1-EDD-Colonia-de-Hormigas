@@ -55,13 +55,19 @@ public class Eliminar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingrese la ciudad a eliminar:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+
+        NumeroCiudad.setBackground(new java.awt.Color(255, 153, 153));
         jPanel1.add(NumeroCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 410, -1));
 
+        EliminarCiudad.setBackground(new java.awt.Color(0, 0, 0));
         EliminarCiudad.setText("Eliminar");
         EliminarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +76,7 @@ public class Eliminar extends javax.swing.JFrame {
         });
         jPanel1.add(EliminarCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 70, -1));
 
+        Menu.setBackground(new java.awt.Color(0, 0, 0));
         Menu.setText("Menu");
         Menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

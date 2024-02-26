@@ -59,12 +59,16 @@ public class Agregar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel1.setForeground(new java.awt.Color(255, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingresa el numero de la ciudad:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 270, -1));
 
+        NumeroCiudad.setBackground(new java.awt.Color(255, 153, 153));
         NumeroCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NumeroCiudadActionPerformed(evt);
@@ -73,9 +77,11 @@ public class Agregar extends javax.swing.JFrame {
         jPanel1.add(NumeroCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 370, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ingrese la ciudad, conexión y distancia entre ambas:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
+        RelacionesCiudad.setBackground(new java.awt.Color(255, 153, 153));
         RelacionesCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RelacionesCiudadActionPerformed(evt);
@@ -83,6 +89,7 @@ public class Agregar extends javax.swing.JFrame {
         });
         jPanel1.add(RelacionesCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 370, -1));
 
+        AgregarCiudad.setBackground(new java.awt.Color(0, 0, 0));
         AgregarCiudad.setText("Agregar");
         AgregarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +98,7 @@ public class Agregar extends javax.swing.JFrame {
         });
         jPanel1.add(AgregarCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 80, -1));
 
+        Menu.setBackground(new java.awt.Color(0, 0, 0));
         Menu.setText("Menu");
         Menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
